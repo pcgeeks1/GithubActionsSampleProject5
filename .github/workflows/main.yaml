@@ -33,11 +33,10 @@ jobs:
 
     - name: Setting up additional libraries, installiing and launching App
       run: |
-        chmod +x ./Scripts/additional_setup.sh
-        bash ./Scripts/additional_setup.sh
+        chmod +x ./scripts/additional_setup.sh
+        bash ./scripts/additional_setup.sh
   
-    - name: Print heap memory usage\
+    - name: Print processes
       run: |
         sleep 2
-        chmod +x ./Scripts/heap_memory_usage.sh
-        bash ./Scripts/heap_memory_usage.sh
+        adb shell top
