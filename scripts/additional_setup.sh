@@ -30,9 +30,9 @@ adb devices
 echo "\n\n Emulator boot status"
 adb shell getprop sys.boot_completed
 
-echo "\n\n Installing application"
-./gradlew installDebug
+# echo "\n\n Installing application"
+# ./gradlew installDebug
 
-echo "\n\n Launching app"
-sleep 2
-adb shell am start -n com.example.githubactionssampleproject3/com.example.githubactionssampleproject3.MainActivity
+# echo "\n\n Launching app"
+# sleep 2
+# adb shell am start -n com.example.githubactionssampleproject3/com.example.githubactionssampleproject3.MainActivity
