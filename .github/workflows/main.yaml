@@ -1,0 +1,41 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  HOME: '/home/runner/.config'
+
+jobs:
+
+  heap_memory_usage:
+  
+    runs-on: ubuntu-latest
+    name: Heap memory profiling
+
+    steps:
+
+    - name: Checkout the code
+      uses: actions/checkout@v3
+
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Setting up additional libraries, installiing and launching App
+      run: |
+        chmod +x ./scripts/additional_setup.sh
+        bash ./scripts/additional_setup.sh
+  
+    - name: Print processes
+      run: |
+        sleep 2
+        adb shell top
